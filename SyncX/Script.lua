@@ -102,7 +102,7 @@ end)
 
 T1:AddSwitch("Auto Fuel / gas", function(bool)
         _G.Gas = bool
-        while wait() do
+        while wait(3) do
             if _G.Gas == false then break end
             game:GetService("ReplicatedStorage").Remotes.Game.ClientToggleUseGasStation:FireServer(game:GetService("Workspace").Map.Zones:FindFirstChild(_G.Worlds):FindFirstChild(_G.Zones).GasStation.GasPumps, true)
     end
