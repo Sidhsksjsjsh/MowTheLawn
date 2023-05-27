@@ -111,9 +111,9 @@ T1:AddSwitch("Auto Buy Gas Tank", function(bool)
 end)
 
 T1:AddSwitch("Auto Buy Lawn Mower", function(bool)
-        _G.Tank = bool
+        _G.Lawn = bool
         while wait() do
-            if _G.Tank == false then break end
+            if _G.Lawn == false then break end
             game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("Lawnmower", 1)
             game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("Lawnmower", 2)
             game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("Lawnmower", 3)
