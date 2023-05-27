@@ -15,6 +15,30 @@ local T2 = Window:AddTab("Egg")
 local T3 = Window:AddTab("Obstacle")
 local T4 = Window:AddTab("Boost")
 
+T4:AddSwitch("Auto Boost Speed", function(bool)
+        _G.Boost_1 = bool
+        while wait() do
+            if _G.Boost_1 == false then break end
+               game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyPowerup:InvokeServer("WalkSpeed")
+      end
+ end)
+
+T4:AddSwitch("Auto Boost Damage", function(bool)
+        _G.Boost_2 = bool
+        while wait() do
+            if _G.Boost_2 == false then break end
+               game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyPowerup:InvokeServer("Damage")
+      end
+ end)
+
+T4:AddSwitch("Auto Boost Hitbox Size", function(bool)
+        _G.Boost_3 = bool
+        while wait() do
+            if _G.Boost_3 == false then break end
+               game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyPowerup:InvokeServer("HitboxSize")
+      end
+ end)
+
 local Dreamin = T3:AddDropdown("Select World Target", function(object)
         _G.WorldsTarget = object
 end)
@@ -23,7 +47,7 @@ Dreamin:Add("1")
 Dreamin:Add("2")
 Dreamin:Add("3")
 
-local Zones = T3:AddDropdown("Select Zone", function(object)
+local Zones = T3:AddDropdown("Select Zone Target", function(object)
         _G.ZonesTarget = object
 end)
 
@@ -124,7 +148,19 @@ T3:AddSwitch("Auto Destroy All Eggs", function(bool)
         _G.AllEggs = bool
         while wait() do
             if _G.AllEggs == false then break end
-               game:GetService("ReplicatedStorage").Remotes.Game.ClientToggleDamageObstacle:FireServer(game:GetService("Workspace").Map.Zones:FindFirstChild(_G.WorldsTarget):FindFirstChild(_G.ZonesTarget).Obstacles:FindFirstChild(_G.EggsTarget), true)
+            game:GetService("ReplicatedStorage").Remotes.Game.ClientToggleDamageObstacle:FireServer(game:GetService("Workspace").Map.Zones:FindFirstChild(_G.WorldsTarget):FindFirstChild(_G.ZonesTarget).Obstacles:FindFirstChild(ObstacleTable.A), true)
+            game:GetService("ReplicatedStorage").Remotes.Game.ClientToggleDamageObstacle:FireServer(game:GetService("Workspace").Map.Zones:FindFirstChild(_G.WorldsTarget):FindFirstChild(_G.ZonesTarget).Obstacles:FindFirstChild(ObstacleTable.B), true)
+            game:GetService("ReplicatedStorage").Remotes.Game.ClientToggleDamageObstacle:FireServer(game:GetService("Workspace").Map.Zones:FindFirstChild(_G.WorldsTarget):FindFirstChild(_G.ZonesTarget).Obstacles:FindFirstChild(ObstacleTable.C), true)
+            game:GetService("ReplicatedStorage").Remotes.Game.ClientToggleDamageObstacle:FireServer(game:GetService("Workspace").Map.Zones:FindFirstChild(_G.WorldsTarget):FindFirstChild(_G.ZonesTarget).Obstacles:FindFirstChild(ObstacleTable.D), true)
+            game:GetService("ReplicatedStorage").Remotes.Game.ClientToggleDamageObstacle:FireServer(game:GetService("Workspace").Map.Zones:FindFirstChild(_G.WorldsTarget):FindFirstChild(_G.ZonesTarget).Obstacles:FindFirstChild(ObstacleTable.E), true)
+            game:GetService("ReplicatedStorage").Remotes.Game.ClientToggleDamageObstacle:FireServer(game:GetService("Workspace").Map.Zones:FindFirstChild(_G.WorldsTarget):FindFirstChild(_G.ZonesTarget).Obstacles:FindFirstChild(ObstacleTable.F), true)
+            game:GetService("ReplicatedStorage").Remotes.Game.ClientToggleDamageObstacle:FireServer(game:GetService("Workspace").Map.Zones:FindFirstChild(_G.WorldsTarget):FindFirstChild(_G.ZonesTarget).Obstacles:FindFirstChild(ObstacleTable.G), true)
+            game:GetService("ReplicatedStorage").Remotes.Game.ClientToggleDamageObstacle:FireServer(game:GetService("Workspace").Map.Zones:FindFirstChild(_G.WorldsTarget):FindFirstChild(_G.ZonesTarget).Obstacles:FindFirstChild(ObstacleTable.H), true)
+            game:GetService("ReplicatedStorage").Remotes.Game.ClientToggleDamageObstacle:FireServer(game:GetService("Workspace").Map.Zones:FindFirstChild(_G.WorldsTarget):FindFirstChild(_G.ZonesTarget).Obstacles:FindFirstChild(ObstacleTable.I), true)
+            game:GetService("ReplicatedStorage").Remotes.Game.ClientToggleDamageObstacle:FireServer(game:GetService("Workspace").Map.Zones:FindFirstChild(_G.WorldsTarget):FindFirstChild(_G.ZonesTarget).Obstacles:FindFirstChild(ObstacleTable.J), true)
+            game:GetService("ReplicatedStorage").Remotes.Game.ClientToggleDamageObstacle:FireServer(game:GetService("Workspace").Map.Zones:FindFirstChild(_G.WorldsTarget):FindFirstChild(_G.ZonesTarget).Obstacles:FindFirstChild(ObstacleTable.K), true)
+            game:GetService("ReplicatedStorage").Remotes.Game.ClientToggleDamageObstacle:FireServer(game:GetService("Workspace").Map.Zones:FindFirstChild(_G.WorldsTarget):FindFirstChild(_G.ZonesTarget).Obstacles:FindFirstChild(ObstacleTable.L), true)
+            
       end
  end)
 
@@ -228,6 +264,14 @@ T1:AddSwitch("Auto Fuel / gas", function(bool)
         while wait(3) do
             if _G.Gas == false then break end
             game:GetService("ReplicatedStorage").Remotes.Game.ClientToggleUseGasStation:FireServer(game:GetService("Workspace").Map.Zones:FindFirstChild(_G.Worlds):FindFirstChild(_G.Zones).GasStation.GasPumps, true)
+    end
+end)
+
+T1:AddSwitch("Auto Rebirth", function(bool)
+        _G.Reb = bool
+        while wait(3) do
+            if _G.Reb == false then break end
+            game:GetService("ReplicatedStorage").Remotes.Data.RequestRebirth:FireServer()
     end
 end)
 
