@@ -12,6 +12,129 @@ local Window = library:AddWindow("Sync X - Cheating Tool",
 
 local T1 = Window:AddTab("Farm")
 local T2 = Window:AddTab("Egg")
+local T3 = Window:AddTab("Obstacle")
+local T4 = Window:AddTab("Boost")
+
+local Dreamin = T3:AddDropdown("Select World Target", function(object)
+        _G.WorldsTarget = object
+end)
+
+Dreamin:Add("1")
+Dreamin:Add("2")
+Dreamin:Add("3")
+
+local Zones = T3:AddDropdown("Select Zone", function(object)
+        _G.ZonesTarget = object
+end)
+
+Zones:Add("--- World 1 ---")
+Zones:Add("1")
+Zones:Add("2")
+Zones:Add("3")
+Zones:Add("4")
+Zones:Add("5")
+Zones:Add("6")
+Zones:Add("7")
+Zones:Add("8")
+Zones:Add("9")
+Zones:Add("10")
+Zones:Add("--- World 2 ---")
+Zones:Add("11")
+Zones:Add("12")
+Zones:Add("13")
+Zones:Add("14")
+Zones:Add("15")
+Zones:Add("16")
+Zones:Add("17")
+Zones:Add("18")
+Zones:Add("19")
+Zones:Add("20")
+Zones:Add("--- World 3 ---")
+Zones:Add("21")
+Zones:Add("22")
+Zones:Add("23")
+Zones:Add("24")
+Zones:Add("25")
+Zones:Add("26")
+Zones:Add("27")
+Zones:Add("28")
+Zones:Add("29")
+Zones:Add("30")
+
+local Obstacle = T3:AddDropdown("Select Egg Target", function(object)
+        _G.EggsTarget = object
+end)
+
+Obstacle:Add("Ant Egg")
+Obstacle:Add("Striped Egg")
+Obstacle:Add("Painted Egg")
+Obstacle:Add("Flying Egg")
+Obstacle:Add("Techno Egg")
+Obstacle:Add("Cute Egg")
+Obstacle:Add("Frozen Egg")
+Obstacle:Add("Golden Egg")
+Obstacle:Add("Cloudy Egg")
+Obstacle:Add("Purple Ore Egg")
+Obstacle:Add("Lucky Egg")
+Obstacle:Add("Magma Egg")
+
+local ObstacleEggs = {
+      "Ant Egg",
+      "Striped Egg",
+      "Painted Egg",
+      "Flying Egg",
+      "Techno Egg",
+      "Cute Egg",
+      "Frozen Egg",
+      "Golden Egg",
+      "Cloudy Egg",
+      "Purple Ore Egg",
+      "Lucky Egg",
+      "Magma Egg"
+}
+
+function GetRandomObstacle()
+    return ObstacleEggs[math.random(1, #ObstacleEggs)]
+end
+
+T3:AddSwitch("Auto Destroy Selected Egg", function(bool)
+        _G.Sniping = bool
+        while wait() do
+            if _G.Sniping == false then break end
+               game:GetService("ReplicatedStorage").Remotes.Game.ClientToggleDamageObstacle:FireServer(game:GetService("Workspace").Map.Zones:FindFirstChild(_G.WorldsTarget):FindFirstChild(_G.ZonesTarget).Obstacles:FindFirstChild(_G.EggsTarget), true)
+      end
+ end)
+
+local ObstacleTable = {
+      A = "Ant Egg",
+      B = "Striped Egg",
+      C = "Painted Egg",
+      D = "Flying Egg",
+      E = "Techno Egg",
+      F = "Cute Egg",
+      G = "Frozen Egg",
+      H = "Golden Egg",
+      I = "Cloudy Egg",
+      J = "Purple Ore Egg",
+      K = "Lucky Egg",
+      L = "Magma Egg"
+}
+
+T3:AddSwitch("Auto Destroy All Eggs", function(bool)
+        _G.AllEggs = bool
+        while wait() do
+            if _G.AllEggs == false then break end
+               game:GetService("ReplicatedStorage").Remotes.Game.ClientToggleDamageObstacle:FireServer(game:GetService("Workspace").Map.Zones:FindFirstChild(_G.WorldsTarget):FindFirstChild(_G.ZonesTarget).Obstacles:FindFirstChild(_G.EggsTarget), true)
+      end
+ end)
+
+T3:AddSwitch("Auto Destroy Random Eggs", function(bool)
+        _G.REggs = bool
+        while wait() do
+            if _G.REggs == false then break end
+               game:GetService("ReplicatedStorage").Remotes.Game.ClientToggleDamageObstacle:FireServer(game:GetService("Workspace").Map.Zones:FindFirstChild(_G.WorldsTarget):FindFirstChild(_G.ZonesTarget).Obstacles:FindFirstChild(GetRandomObstacle()), true)
+      end
+ end)
 
 local Egg = T2:AddDropdown("Select Egg", function(object)
         _G.Eggs = object
