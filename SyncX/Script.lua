@@ -73,7 +73,7 @@ T1:AddSwitch("Auto Fuel / gas", function(bool)
         _G.Gas = bool
         while wait() do
             if _G.Gas == false then break end
-            game:GetService("ReplicatedStorage").Remotes.Game.ClientToggleUseGasStation:FireServer(game:GetService("Workspace").Map.Zones:FindFirstChild("1"):FindFirstChild("1").GasStation.GasPumps, true)
+            game:GetService("ReplicatedStorage").Remotes.Game.ClientToggleUseGasStation:FireServer(game:GetService("Workspace").Map.Zones:FindFirstChild("1"):FindFirstChild(_G.Zones).GasStation.GasPumps, true)
     end
 end)
 
@@ -90,4 +90,41 @@ T1:AddSwitch("Auto Collect Gifts", function(bool)
             game:GetService("ReplicatedStorage").Remotes.Shop.ClientClaimPlaytimeGift:FireServer(7)
             game:GetService("ReplicatedStorage").Remotes.Shop.ClientClaimPlaytimeGift:FireServer(8)
     end
+end)
+
+T1:AddSwitch("Auto Buy Gas Tank", function(bool)
+        _G.Tank = bool
+        while wait() do
+            if _G.Tank == false then break end
+            game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("GasTank", 1)
+            game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("GasTank", 2)
+            game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("GasTank", 3)
+            game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("GasTank", 4)
+            game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("GasTank", 5)
+            game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("GasTank", 6)
+            game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("GasTank", 7)
+            game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("GasTank", 8)
+            game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("GasTank", 9)
+            game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("GasTank", 10)
+            game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("GasTank", 11)
+     end
+end)
+
+T1:AddSwitch("Auto Buy Lawn Mower", function(bool)
+        _G.Tank = bool
+        while wait() do
+            if _G.Tank == false then break end
+            game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("Lawnmower", 1)
+            game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("Lawnmower", 2)
+            game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("Lawnmower", 3)
+            game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("Lawnmower", 4)
+            game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("Lawnmower", 5)
+            game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("Lawnmower", 6)
+            game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("Lawnmower", 7)
+            game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("Lawnmower", 8)
+            game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("Lawnmower", 9)
+            game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("Lawnmower", 10)
+            game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("Lawnmower", 11)
+            game:GetService("ReplicatedStorage").Remotes.Shop.ClientBuyGameItem:FireServer("Lawnmower", 12)
+     end
 end)
