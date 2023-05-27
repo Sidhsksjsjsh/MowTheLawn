@@ -46,10 +46,19 @@ T2:AddSwitch("Auto Equip best", function(bool)
     end
 end)
 
+local Dream = T1:AddDropdown("Select World", function(object)
+        _G.Worlds = object
+end)
+
+Dream:Add("1")
+Dream:Add("2")
+Dream:Add("3")
+
 local Zone = T1:AddDropdown("Select Zone", function(object)
         _G.Zones = object
 end)
 
+Zone:Add("--- World 1 ---")
 Zone:Add("1")
 Zone:Add("2")
 Zone:Add("3")
@@ -60,6 +69,28 @@ Zone:Add("7")
 Zone:Add("8")
 Zone:Add("9")
 Zone:Add("10")
+Zone:Add("--- World 2 ---")
+Zone:Add("11")
+Zone:Add("12")
+Zone:Add("13")
+Zone:Add("14")
+Zone:Add("15")
+Zone:Add("16")
+Zone:Add("17")
+Zone:Add("18")
+Zone:Add("19")
+Zone:Add("20")
+Zone:Add("--- World 3 ---")
+Zone:Add("12")
+Zone:Add("22")
+Zone:Add("23")
+Zone:Add("24")
+Zone:Add("25")
+Zone:Add("26")
+Zone:Add("27")
+Zone:Add("28")
+Zone:Add("29")
+Zone:Add("30")
 
 T1:AddSwitch("Auto Grass", function(bool)
         _G.Mawn = bool
@@ -73,7 +104,7 @@ T1:AddSwitch("Auto Fuel / gas", function(bool)
         _G.Gas = bool
         while wait() do
             if _G.Gas == false then break end
-            game:GetService("ReplicatedStorage").Remotes.Game.ClientToggleUseGasStation:FireServer(game:GetService("Workspace").Map.Zones:FindFirstChild("1"):FindFirstChild(_G.Zones).GasStation.GasPumps, true)
+            game:GetService("ReplicatedStorage").Remotes.Game.ClientToggleUseGasStation:FireServer(game:GetService("Workspace").Map.Zones:FindFirstChild(_G.Worlds):FindFirstChild(_G.Zones).GasStation.GasPumps, true)
     end
 end)
 
